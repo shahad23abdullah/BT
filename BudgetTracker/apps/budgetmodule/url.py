@@ -2,5 +2,5 @@ from django.urls import path, include
 from apps.budgetmodule import views
 urlpatterns = [
     path('', views.index, name='index'),
-    path('', views.budget, name='XX' ),
+    path('budget/', views.budget ),
 ]

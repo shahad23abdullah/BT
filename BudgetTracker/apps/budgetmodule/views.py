@@ -7,4 +7,4 @@ def index(request):
 
 
 def budget(request):
-    return render(request ,'budgetmodule/userBudget.html')
+   return render(request ,'budgetmodule/userBudget.html') # rendering a template 
