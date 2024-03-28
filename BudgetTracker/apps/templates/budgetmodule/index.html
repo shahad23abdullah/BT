@@ -1,27 +1,26 @@
 {% extends "layouts/base.html" %}
 
-    
+task1 ={'id':12344321 , 'Why? ':'Saving money ', 'precent':'50%%'}
+task1 ={'id':12344321 , 'Why? ':' buying new Phone ', 'precent':'20%%'}
+
 {% block content %}
 <h3> wellcome to Budget tracker website , where we can help you SAVE YOUR MONEY ^_^</h3>
 
 <!-- this judt for standing Formatting anf list tags -->
-<ul>
-    <p>testing unorder list </p>
-    <li><p> This text has <b>subtext</b> using b tag</p></li>
-    <li><p> This text has <strong>subtext</strong> using strong tag</p></li>
-    <li><p> This text has <i>subtext</i> using i tag</p></li>
-    <li><p> This text has <em>subtext</em> using em tag</p></li>
-    <li><p> This text has <small>subtext</small> using small tag</p></li>
-</ul>
+<img src="https://cdn-icons-png.freepik.com/256/2953/2953423.png" >
 
-<ol>
-    <p>testing order list </p>
-    <li><p> This text has <mark>subtext</mark> using mark tag</p></li>
-    <li><p> This text has <del>subtext</del> using del tag</p></li>
-    <li><p> This text has <ins>subtext</ins> using ins tag</p></li>
-    <li><p> This text has X<sub>subtext</sub> using sub tag</p></li>
-    <li><p> This text has X<sup>subtext</sup> using sup tag</p></li>
-</ol>
 
+<form method="post">
+    {% csrf_token %} <!-- to protect the data of the form from attackers -->
+    <label>Keywords:</label>
+    <input type="text" name="keyword" placeholder="enter a keyword"/>
+    <br/> 
+    <label>Search in:</label>
+    <input type="checkbox" name="option1"/><label>Why?</label>
+    <input type="checkbox" name="option2"/><label>precent</label>
+    <br/>
+    
+    <button type="submit" >Search</button>
+   </form>
 
 {% endblock content %}
