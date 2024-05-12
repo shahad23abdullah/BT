@@ -1,1 +1,63 @@
-<h1>hello this is the detail</h1>
+{% extends "budget/base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <section class="section section stats">
+    <div class="row">
+
+        <div class="col s12 m12 14 ">
+            <div class="card panel">
+                <h6 class ="bold">Total Budget</h6>
+                <h1 class ="bold">300SR</h1>
+            </div>
+        </div>
+
+        <div class="col s12 m6 14 ">
+            <div class="card panel">
+                <h6>Total Budget</h6>
+                <h1>300SR</h1>
+            </div>
+        </div>
+
+        <div class="col s12 m6 14 ">
+            <div class="card panel">
+                <h6>Total Budget</h6>
+                <h1>300SR</h1>
+            </div>
+        </div>
+
+    </div>
+  </section>
+  <section class="sectio setio-expenses">
+    <div class="row">
+        <button class="btn waves-effect right"><i class="material-icons white-text left">add_circle</i>
+             Add Expense</button>
+    </div>
+    <ul class="z-depth-1">
+        <li>
+            <div class="card-panel z-depth-0">
+                <div class="row">
+                    <div class="col 16">
+                        <span class="title">Page Design</span>
+                    </div>
+
+                    <div class="col 13">
+                        <span class="title">291$</span>
+                    </div>
+
+                    <div class="col 1">
+                        <span class="title">Development</span>
+                    </div>
+                    <a href="">
+                        <i class="material-icons red-text right">close</i>
+                    </a>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+  </section>
+</div>
+
+{% endblock %}
