@@ -3,101 +3,54 @@
 {% block content %}
 
 <div class="container">
-  <section class="section section stats">
+  <section class="section section-stats">
     <div class="row">
-
-        <div class="col s12 m12 14 ">
+        <div class="col s12 m12 l4">
             <div class="card panel">
-                <h6 class ="bold">Total Budget</h6>
-                <h1 class ="bold">300SR</h1>
+                <h6 class="bold">Total Budget</h6>
+                <h1 class="bold">${{ project.budget }}</h1>
             </div>
         </div>
-
-        <div class="col s12 m6 14 ">
+        <div class="col s12 m6 l4">
             <div class="card panel">
-                <h6>Total Budget</h6>
-                <h1>300SR</h1>
+                <h6>Budget left</h6>
+                <h1>$...</h1> <!-- You need to replace this with actual budget left -->
             </div>
         </div>
-
-        <div class="col s12 m6 14 ">
+        <div class="col s12 m6 l4">
             <div class="card panel">
-                <h6>Total Budget</h6>
-                <h1>300SR</h1>
+                <h6>Total Transactions</h6>
+                <h1>$...</h1> <!-- You need to replace this with actual total transactions -->
             </div>
         </div>
-
     </div>
   </section>
+
   <section class="section section-expenses">
     <div class="row">
-        <button class="btn waves-effect right"><i class="material-icons white-text left">add_circle</i>
-             Add Expense</button>
+        <button class="btn waves-effect right"><i class="material-icons white-text left">add_circle</i>Add Expense</button>
     </div>
     <ul class="z-depth-1">
+        {% for expense in expense_list.all %}
         <li>
             <div class="card-panel z-depth-0">
                 <div class="row">
-                    <div class="col 16">
-                        <span class="title">Page Design</span>
+                    <div class="col s6">
+                        <span class="title">{{ expense.title }}</span>
                     </div>
-
-                    <div class="col 13">
-                        <span class="title">291$</span>
+                    <div class="col s3">
+                        <span class="title">${{ expense.amount }}</span>
                     </div>
-
-                    <div class="col 1">
-                        <span class="title bold ">Development</span>
+                    <div class="col s3">
+                        <span class="title bold">{{ expense.category.name }}</span>
                     </div>
-                    <a href="">
+                    <a href="#">
                         <i class="material-icons red-text right">close</i>
                     </a>
                 </div>
             </div>
         </li>
-
-        <li>
-            <div class="card-panel z-depth-0">
-                <div class="row">
-                    <div class="col 16">
-                        <span class="title">Page Design</span>
-                    </div>
-
-                    <div class="col 13">
-                        <span class="title">291$</span>
-                    </div>
-
-                    <div class="col 1">
-                        <span class="title bold ">Development</span>
-                    </div>
-
-                    <a href="">
-                        <i class="material-icons red-text right">close</i>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li>
-            <div class="card-panel z-depth-0">
-                <div class="row">
-                    <div class="col 16">
-                        <span class="title">Page Design</span>
-                    </div>
-
-                    <div class="col 13">
-                        <span class="title">291$</span>
-                    </div>
-
-                    <div class="col 1">
-                        <span class="title bold ">Development</span>
-                    </div>
-                    <a href="">
-                        <i class="material-icons red-text right">close</i>
-                    </a>
-                </div>
-            </div>
-        </li>
+        {% endfor %}
     </ul>
   </section>
 </div>

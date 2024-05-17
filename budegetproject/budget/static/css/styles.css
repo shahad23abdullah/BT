@@ -18,19 +18,23 @@ html{
     border-style: dotted;
 }
 
-.noproject-wrapper h3{
-    padding: 10px ;
-    margin-bottom: 30px;
+.noproject-wrapper h3 {
+    padding: 10px;
+    margin-bottom: 50px;
 }
 
 /*project detailes*/
 
-.section-stats h1{
+.section-stats h1 {
     font-size: 4vw;
     margin: 15px 0px;
-
 }
 
+@media(max-width: 992px){
+    .section-stats h1 {
+        font-size: calc(16px + 6vw);
+    }
+}
 /*project detailes expenses*/
 .section-expenses button{
     padding: 0px  40px;
@@ -44,7 +48,7 @@ html{
     border-radius: 0;
     margin: 0;
 }
-.section-expenses .expenses .category{
+.section-expenses .expense .category{
     font-size: 13px;
 
 
