@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 html{
     font-family: 'Montserrat';
     background-color:#dcd0daa8 ;
@@ -17,11 +18,25 @@ html{
     border: 6px solid #ad7fa5c5 ;
     border-style: dotted;
 }
+
 .noproject-wrapper h3 {
     padding: 10px;
     margin-bottom: 50px;
 }
 
+/* project add view*/
+form ul li.category {
+    display: inline-block;
+    background-color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+
+.btn{
+    font-weight: bold;
+    text-shadow: 0px 3px 4px rgb(0 , 0 ,0 , .25);
+    background-color: #956db0;
+}
 /*project detailes*/
 
 .section-stats h1 {

@@ -1,5 +1,5 @@
 {% extends "budget/base.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="container">
@@ -13,14 +13,14 @@
         </div>
         <div class="col s12 m6 l4">
             <div class="card panel">
-                <h6>Budget left</h6>
-                <h1>$...</h1> <!-- You need to replace this with actual budget left -->
+                <h6>Budget Left</h6>
+                <h1>$... <!-- Replace this with actual budget left --></h1>
             </div>
         </div>
         <div class="col s12 m6 l4">
             <div class="card panel">
                 <h6>Total Transactions</h6>
-                <h1>$...</h1> <!-- You need to replace this with actual total transactions -->
+                <h1>$... <!-- Replace this with actual total transactions --></h1>
             </div>
         </div>
     </div>
@@ -28,10 +28,10 @@
 
   <section class="section section-expenses">
     <div class="row">
-        <button class="btn waves-effect right"><i class="material-icons white-text left">add_circle</i>Add Expense</button>
+        <button class="btn waves-effect modal-trigger right" data-target="expenseModel"><i class="material-icons white-text left">add_circle</i>Add Expense</button>
     </div>
     <ul class="z-depth-1">
-        {% for expense in expense_list.all %}
+        {% for expense in expense_list %}
         <li>
             <div class="card-panel z-depth-0">
                 <div class="row">
@@ -54,5 +54,37 @@
     </ul>
   </section>
 </div>
+
+<div id="expenseModel" class="modal">
+    <div class="modal-content">
+        <h4>Add Expense</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="title">Title</label>
+            <input name="title" id="title" type="text">
+
+            <label for="amount">Amount</label>
+            <input name="amount" id="amount" type="number">
+
+            <label for="category">Category</label>
+            <select name="category" id="category">
+                {% for category in category_list %}
+                <option>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn">Add</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+
+        var select_elems = document.querySelectorAll('select');
+        var select_instances = M.FormSelect.init(select_elems);
+    });
+</script>
 
 {% endblock %}
