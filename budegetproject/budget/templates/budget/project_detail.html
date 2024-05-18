@@ -44,7 +44,7 @@
                     <div class="col s3">
                         <span class="title bold">{{ expense.category.name }}</span>
                     </div>
-                    <a href="#">
+                    <a href="#" onclick = "deleteE({{ expense.id }})"> 
                         <i class="material-icons red-text right">close</i>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
 <div id="expenseModel" class="modal">
     <div class="modal-content">
         <h4>Add Expense</h4>
-        <form method="POST">
+        <form method="POST" action="{% url 'detail' project.slug %}">
             {% csrf_token %}
             <label for="title">Title</label>
             <input name="title" id="title" type="text">
@@ -69,7 +69,7 @@
             <label for="category">Category</label>
             <select name="category" id="category">
                 {% for category in category_list %}
-                <option>{{ category.name }}</option>
+                <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
             </select>
             <button type="submit" class="btn">Add</button>
@@ -84,7 +84,32 @@
 
         var select_elems = document.querySelectorAll('select');
         var select_instances = M.FormSelect.init(select_elems);
+
+
+        function deleteE(id) {
+            if (confirm("Are you sure you want to delete this expense?")) {
+                fetch("{% url 'delete_expense' %}", {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ 'id': id })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // If successful, remove the expense from the DOM
+                        const expenseElement = document.getElementById('expense_' + id);
+                        expenseElement.parentNode.removeChild(expenseElement);
+                    } else {
+                        console.error('Failed to delete expense');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
     });
+
 </script>
 
 {% endblock %}
