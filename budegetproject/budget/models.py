@@ -1,5 +1,5 @@
-from django.db import models
-from django.utils.text import slugify
+from django.db import models # type: ignore
+from django.utils.text import slugify # type: ignore
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
@@ -9,6 +9,20 @@ class Project(models.Model):
 def save(self, *args, ** kwargs):
     self.slug = slugify(self.name)
     super(Project, self).save(*args, ** kwargs)
+
+
+def budget_left(self):  # sourcery skip: sum-comprehension
+    expense_list = Expense.objects.filter(Project = self)
+    total_expense_amount = 0
+    for expense in expense_list:
+        total_expense_amount += expense.amount
+    
+    
+    return self.budget - total_expense_amount 
+    
+def total(self):
+    expense_list = Expense.objects.filter(Project = self)
+    return len(expense_list)
 
 class Category(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)

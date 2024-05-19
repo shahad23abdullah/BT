@@ -14,13 +14,13 @@
         <div class="col s12 m6 l4">
             <div class="card panel">
                 <h6>Budget Left</h6>
-                <h1>$... <!-- Replace this with actual budget left --></h1>
+                <h1>${{ project.budget_left }}</h1>
             </div>
         </div>
         <div class="col s12 m6 l4">
             <div class="card panel">
                 <h6>Total Transactions</h6>
-                <h1>$... <!-- Replace this with actual total transactions --></h1>
+                <h1>${{ project.total }}</h1>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     <div class="col s3">
                         <span class="title bold">{{ expense.category.name }}</span>
                     </div>
-                    <a onclick = "deleteE({{ expense.id }})"> 
+                    <a onclick = "deleteE(this)"> 
                         <i class="material-icons red-text right">close</i>
                     </a>
                 </div>
@@ -86,7 +86,11 @@ var select_elems = document.querySelectorAll('select');
 var select_instances = M.FormSelect.init(select_elems);
 
 
-function deleteE(id) {
+function deleteE(e) {
+
+    let id = e.dataset.id
+    e.closest('li').remove()
+
     fetch('' , {
         method : 'DELETE',
         headers :{
