@@ -20,7 +20,7 @@
         <div class="col s12 m6 l4">
             <div class="card panel">
                 <h6>Total Transactions</h6>
-                <h1>${{ project.total }}</h1>
+                <h1>${{ project.total_expense }}</h1>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     <div class="col s3">
                         <span class="title bold">{{ expense.category.name }}</span>
                     </div>
-                    <a onclick = "deleteE(this)"> 
+                    <a onclick = "deleteE(this)" data-id = "{{expense.id}}"> 
                         <i class="material-icons red-text right">close</i>
                     </a>
                 </div>
@@ -88,20 +88,20 @@ var select_instances = M.FormSelect.init(select_elems);
 
 function deleteE(e) {
 
-    let id = e.dataset.id
-    e.closest('li').remove()
+    let id = e.dataset.id;
+    e.closest('li').remove();
 
-    fetch('' , {
-        method : 'DELETE',
-        headers :{
-            'X-CSRFToken': '{{ csrf_token }}'
+    fetch('', { // Sending a DELETE request
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}' // Setting the CSRF token in the request headers
         },
-        body : JSON.stringify({
-            'id' : id
+        body: JSON.stringify({ // Sending the 'id' as JSON data in the request body
+            'id': id
         }),
-        credentials: 'same-origin',
-    })
-    }
+        credentials: 'same-origin' // Sending cookies along with the request
+    });
+}
     
 
 </script>

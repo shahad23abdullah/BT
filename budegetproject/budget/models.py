@@ -20,8 +20,8 @@ def budget_left(self):  # sourcery skip: sum-comprehension
     
     return self.budget - total_expense_amount 
     
-def total(self):
-    expense_list = Expense.objects.filter(Project = self)
+def total_expense(self):
+    expense_list = Expense.objects.filter(project = self)
     return len(expense_list)
 
 class Category(models.Model):
