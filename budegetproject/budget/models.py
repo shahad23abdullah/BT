@@ -11,19 +11,17 @@ def save(self, *args, ** kwargs):
     super(Project, self).save(*args, ** kwargs)
 
 
-def budget_left(self):  # sourcery skip: sum-comprehension
-    expense_list = Expense.objects.filter(Project = self)
-    total_expense_amount = 0
+def budget_left(self):  
+    expense_list = Expense.objects.filter(project = self)
+    total_expense_amount = 0 
     for expense in expense_list:
         total_expense_amount += expense.amount
-    
-    
-    return self.budget - total_expense_amount 
+    return self.budget - total_expense_amount
+        
     
 def total_expense(self):
     expense_list = Expense.objects.filter(project = self)
-    return len(expense_list)
-
+    return len (expense_list)
 class Category(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
