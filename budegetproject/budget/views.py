@@ -9,7 +9,8 @@ from django.utils.text import slugify
 from .forms import ExpensesForm
 
 def project_list(request):
-    return render(request, 'budget/project_list.html')
+    projects = Project.objects.all()
+    return render(request, 'budget/project_list.html', {'project_list': projects})
 
 def project_detail(request, project_slug):
     project = get_object_or_404(Project, slug=project_slug)
