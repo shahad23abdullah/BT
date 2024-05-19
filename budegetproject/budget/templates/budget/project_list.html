@@ -7,6 +7,7 @@
     <hr>
     <div class="row">
         {% for project in project_list %}
+        <a href="{% url 'add' %}" class="btn">Add</a>
         <div class="co s12 l3">
             <div class="card-panel">
                 <h5>{{ project.name }}</h5>
@@ -15,8 +16,8 @@
         </div>
         {% empty %}
         <div class="noproject-wrapper center">
-            <h3 class="grey-text">sorry , you don't have any projects, yet.</h3>
-            <a href="" class="btn-large grey">
+            <h4 class="grey-text">sorry , you don't have any projects, yet.</h4>
+            <a href="{% url 'add' %}" class="btn-large grey">
                 <i class="material-icons white-text left">add_circle</i>
                 <span class="bold">Add Projects</span>
             </a>

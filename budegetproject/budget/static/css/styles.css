@@ -13,8 +13,9 @@ html{
 }
 /*project list*/
 .noproject-wrapper{
-    margin-top: 150px;
-    padding:80px 0px ;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding:60px 0px ;
     border: 6px solid #ad7fa5c5 ;
     border-style: dotted;
 }
@@ -36,6 +37,11 @@ form ul li.category {
     font-weight: bold;
     text-shadow: 0px 3px 4px rgb(0 , 0 ,0 , .25);
     background-color: #956db0;
+}
+.container2{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding:60px 0px ;
 }
 /*project detailes*/
 
@@ -68,3 +74,6 @@ form ul li.category {
 
 }
 
+.section-expenses .closee:hover{
+    cursor: pointer;
+}
