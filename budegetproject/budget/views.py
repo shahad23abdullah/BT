@@ -31,9 +31,9 @@ def project_detail(request, project_slug):
                 title=title,
                 amount=amount,
                 category=category
-            )
+            ).save()
             
-    elif request.method == 'DELETE':  # Fix here from 'request.mthod' to 'request.method'
+    elif request.method == 'DELETE': 
         id = json.loads(request.body)['id']
         expense = get_object_or_404(Expense, id=id)
         expense.delete()

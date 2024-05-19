@@ -44,7 +44,7 @@
                     <div class="col s3">
                         <span class="title bold">{{ expense.category.name }}</span>
                     </div>
-                    <a href="#" onclick = "deleteE({{ expense.id }})"> 
+                    <a onclick = "deleteE({{ expense.id }})"> 
                         <i class="material-icons red-text right">close</i>
                     </a>
                 </div>
@@ -78,37 +78,27 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.modal');
-        var instances = M.Modal.init(elems);
+    
+var elems = document.querySelectorAll('.modal');
+var instances = M.Modal.init(elems);
 
-        var select_elems = document.querySelectorAll('select');
-        var select_instances = M.FormSelect.init(select_elems);
+var select_elems = document.querySelectorAll('select');
+var select_instances = M.FormSelect.init(select_elems);
 
 
-        function deleteE(id) {
-            if (confirm("Are you sure you want to delete this expense?")) {
-                fetch("{% url 'delete_expense' %}", {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    },
-                    body: JSON.stringify({ 'id': id })
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // If successful, remove the expense from the DOM
-                        const expenseElement = document.getElementById('expense_' + id);
-                        expenseElement.parentNode.removeChild(expenseElement);
-                    } else {
-                        console.error('Failed to delete expense');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            }
-        }
-    });
+function deleteE(id) {
+    fetch('' , {
+        method : 'DELETE',
+        headers :{
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body : JSON.stringify({
+            'id' : id
+        }),
+        credentials: 'same-origin',
+    })
+    }
+    
 
 </script>
 
