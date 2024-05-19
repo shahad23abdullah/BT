@@ -10,8 +10,7 @@
         <a href="{% url 'add' %}" class="btn">Add</a>
         <div class="co s12 l3">
             <div class="card-panel">
-                <h5>{{ project.name }}</h5>
-                <a href="{% url 'detail'  project.slug %}" class="btn">Visit</a>
+                <h5>{{ project.name }}</h5><a href="{% url 'detail'  project.slug %}" class="btn">Visit</a>
             </div>
         </div>
         {% empty %}
